@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Guest
+actor Host
+actor Admin
+actor "Payment System" as Payment
+
+rectangle "Airbnb Clone Backend" {
+  Guest -- (Register / Login)
+  Guest -- (Manage Profile)
+  Host  -- (Register / Login)
+  Host  -- (Manage Profile)
+
+  Host  -- (Create Listing)
+  Host  -- (Edit / Delete Listing)
+
+  Guest -- (Search Properties)
+  Guest -- (Create Booking)
+  Host  -- (Create Booking)
+  Guest -- (Cancel Booking)
+  Host  -- (Cancel Booking)
+
+  Guest -- (Leave Review & Rating)
+  Host  -- (Leave Review & Rating)
+
+  Guest -- (Receive Notifications)
+  Host  -- (Receive Notifications)
+  Admin -- (Receive Notifications)
+
+  Guest --> Payment : "Process Payment"
+  Payment --> Host : "Payout"
+
+  Admin -- (Administer Platform)
+}
+@enduml
